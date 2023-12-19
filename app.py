@@ -1,5 +1,23 @@
-def add(a,b):
-    print(a+b)
-    return a+b
-def mult(a,b):
-    return a*b
+from flask import Flask, request, render_template
+app=Flask(__name__)
+@app.route('/')
+def welcome():
+    return "Welcome to my Home page"
+@app.route('/cal', methods=["GET"])
+def math_operator():
+    operation=request.json()
+    number1=request.json["number1"]
+    number2=request.json["number2"]
+    
+    if operation=="add":
+        result=number1+number2
+    elif operation=="multiply":
+        result=number1*number2
+    elif operation=="division":
+        result=number1/number2
+    else:
+        result=number1-number2
+    return result
+print(__name__)
+if __name__=="__main__":
+    app.run()
