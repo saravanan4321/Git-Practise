@@ -7,14 +7,18 @@ def welcome():
 @obj.route('/mark', methods=["GET"])
 def mark_total():
     ops=request.json["ops"]
-    number1=request.json["number1"]
-    number2=request.json['number2']
+    tamil=request.json["Tamil"]
+    english=request.json['English']
+    maths=request.json['Maths']
+    science=request.json['Science']
+    social=request.json['Social']
+
     
     if ops=="Total":
-        result=int(number1)+int(number2)
+        result=int(tamil)+int(english)+int(maths)+int(science)+int(social)
     else:
         if ops=="Average":
-            result=int(number1)+int(number2)/2
+            result=(int(tamil)+int(english)+int(maths)+int(science)+int(social))/5
     
     return "the operation is {} and the result is {}". format(ops,result) 
 print(__name__)
